@@ -1,0 +1,233 @@
+/* ═══════════════════════════════════════════
+   Dashboard Layout & Pages
+   ═══════════════════════════════════════════ */
+
+/* ── Layout ── */
+.layout {
+  min-height: 100vh;
+  background: var(--bg-primary);
+}
+
+.body {
+  display: flex;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+  height: calc(100vh - var(--header-height));
+}
+
+/* ── Page ── */
+.page {
+  padding: var(--space-2xl);
+  max-width: 1200px;
+  animation: fadeInUp 0.4s ease-out;
+}
+
+/* ── Greeting ── */
+.greeting {
+  margin-bottom: var(--space-2xl);
+}
+
+.greetingTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-xs);
+}
+
+.highlight {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.greetingSubtitle {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+}
+
+/* ── Stats Grid ── */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-2xl);
+}
+
+/* ── Section ── */
+.section {
+  margin-bottom: var(--space-2xl);
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+}
+
+.sectionTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.sectionCount {
+  font-size: 0.8125rem;
+  color: var(--text-tertiary);
+  font-weight: 500;
+}
+
+/* ── Continue Card ── */
+.continueCard {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+  padding: var(--space-lg);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  transition: all var(--transition-base);
+}
+
+.continueCard:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.continueThumbnail {
+  width: 120px;
+  height: 80px;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+.continueInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.continueCategory {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+
+.continueTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0.25rem 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.continueInstructor {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-sm);
+}
+
+.continueProgress {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.continueProgressBar {
+  flex: 1;
+  height: 4px;
+  background: var(--bg-elevated);
+  border-radius: 2px;
+  overflow: hidden;
+  max-width: 200px;
+}
+
+.continueProgressFill {
+  height: 100%;
+  background: var(--accent-gradient);
+  border-radius: 2px;
+  transition: width var(--transition-slow);
+}
+
+.continueProgressText {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+}
+
+.continueBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.625rem 1.25rem;
+  background: var(--accent-gradient);
+  color: white;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  box-shadow: 0 2px 12px rgba(139, 92, 246, 0.3);
+}
+
+.continueBtn:hover {
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.5);
+  transform: translateY(-1px);
+}
+
+/* ── Courses Grid ── */
+.coursesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1280px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .coursesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: var(--space-lg);
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .coursesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .continueCard {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .continueThumbnail {
+    width: 100%;
+    height: 120px;
+  }
+
+  .continueBtn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .greetingTitle {
+    font-size: 1.375rem;
+  }
+}

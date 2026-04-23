@@ -1,0 +1,113 @@
+.sidebar {
+  width: var(--sidebar-width);
+  height: calc(100vh - var(--header-height));
+  position: sticky;
+  top: var(--header-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border);
+  padding: var(--space-lg) 0;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.nav {
+  flex: 1;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0 var(--space-sm);
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 0.6875rem var(--space-md);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+  position: relative;
+  text-decoration: none;
+}
+
+.link:hover {
+  background: var(--bg-glass-hover);
+  color: var(--text-primary);
+}
+
+.active {
+  background: var(--accent-muted);
+  color: var(--accent-hover);
+}
+
+.active:hover {
+  background: var(--accent-muted);
+  color: var(--accent-hover);
+}
+
+.activeIndicator {
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 20px;
+  background: var(--accent);
+  border-radius: 0 2px 2px 0;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.label {
+  white-space: nowrap;
+}
+
+/* ── Footer ── */
+.footer {
+  padding: var(--space-md) var(--space-lg);
+  border-top: 1px solid var(--border);
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-glass);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+}
+
+.badgeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--success);
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.4);
+}
+
+.badgeText {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}

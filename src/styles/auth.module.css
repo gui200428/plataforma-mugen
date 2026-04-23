@@ -1,0 +1,200 @@
+/* ═══════════════════════════════════════════
+   Auth Pages — Login & Register
+   ═══════════════════════════════════════════ */
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+
+/* ── Animated Background Orbs ── */
+.bgOrbs {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  animation: float 8s ease-in-out infinite;
+}
+
+.orb1 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #8b5cf6 0%, transparent 70%);
+  top: -10%;
+  right: -5%;
+  animation-delay: 0s;
+}
+
+.orb2 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, #6d28d9 0%, transparent 70%);
+  bottom: -10%;
+  left: -5%;
+  animation-delay: -3s;
+}
+
+.orb3 {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, #4f46e5 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: -5s;
+}
+
+/* ── Grid Pattern ── */
+.gridPattern {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.main {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 440px;
+  padding: var(--space-xl);
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* ── Auth Card ── */
+.card {
+  background: rgba(13, 13, 24, 0.8);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-muted), transparent);
+}
+
+/* ── Header ── */
+.header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.logoWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--space-lg);
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: var(--space-xs);
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+/* ── Form ── */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* ── Error Alert ── */
+.alert {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  animation: fadeIn var(--transition-base) ease-out;
+}
+
+.alertError {
+  background: var(--error-muted);
+  color: var(--error);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* ── Footer Link ── */
+.footer {
+  text-align: center;
+  margin-top: var(--space-xl);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.footer a {
+  color: var(--accent);
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.footer a:hover {
+  color: var(--accent-hover);
+}
+
+/* ── Divider ── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  color: var(--text-tertiary);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .main {
+    padding: var(--space-md);
+  }
+
+  .card {
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+  }
+}

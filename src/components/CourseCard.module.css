@@ -1,0 +1,103 @@
+.card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  cursor: pointer;
+}
+
+.card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.thumbnail {
+  position: relative;
+  height: 140px;
+  overflow: hidden;
+}
+
+.thumbnailImage {
+  width: 100%;
+  height: 100%;
+  transition: transform var(--transition-slow);
+}
+
+.card:hover .thumbnailImage {
+  transform: scale(1.05);
+}
+
+.category {
+  position: absolute;
+  top: var(--space-sm);
+  left: var(--space-sm);
+  padding: 0.25rem 0.625rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+}
+
+.content {
+  padding: var(--space-md) var(--space-lg);
+}
+
+.title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.instructor {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+}
+
+.progressSection {
+  margin-top: auto;
+}
+
+.progressInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-xs);
+}
+
+.progressText {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+.progressPercent {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.progressBar {
+  width: 100%;
+  height: 4px;
+  background: var(--bg-elevated);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--accent-gradient);
+  border-radius: 2px;
+  transition: width var(--transition-slow);
+}

@@ -1,0 +1,51 @@
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.text {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Sizes ── */
+.sm .icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.sm .text {
+  font-size: 1rem;
+}
+
+.md .icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.md .text {
+  font-size: 1.25rem;
+}
+
+.lg .icon svg {
+  width: 40px;
+  height: 40px;
+}
+
+.lg .text {
+  font-size: 1.5rem;
+}
