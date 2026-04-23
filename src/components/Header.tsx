@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 import Logo from "./Logo";
 import styles from "./Header.module.css";
 
@@ -17,7 +18,7 @@ export default function Header({ userName, userEmail }: HeaderProps) {
     .toUpperCase();
 
   async function handleLogout() {
-    await fetch("/api/auth", { method: "DELETE" });
+    Cookies.remove('token');
     router.push("/login");
   }
 

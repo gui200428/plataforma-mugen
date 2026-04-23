@@ -3,6 +3,7 @@
 import { FormEvent, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 import styles from "@/styles/auth.module.css";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
@@ -24,12 +25,8 @@ export default function LoginPage() {
     try {
       const { access_token } = await loginRequest(email, password);
 
-      // Store token via API route (httpOnly cookie)
-      await fetch("/api/auth", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token: access_token }),
-      });
+      // Salva o token no Cookie (válido por 1 dia)
+      Cookies.set('token', access_token, { expires: 1 });
 
       router.push("/dashboard");
     } catch (err: unknown) {

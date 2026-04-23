@@ -5,7 +5,7 @@ import Sidebar from "@/components/Sidebar";
 import { getProfile } from "@/lib/api";
 import styles from "@/styles/dashboard.module.css";
 
-const TOKEN_COOKIE = "apv_token";
+const TOKEN_COOKIE = "token";
 
 export default async function DashboardLayout({
   children,

@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 
-const TOKEN_COOKIE = "apv_token";
+const TOKEN_COOKIE = "token";
 
 export async function getToken(): Promise<string | undefined> {
   const cookieStore = await cookies();
