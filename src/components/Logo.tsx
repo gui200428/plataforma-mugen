@@ -32,7 +32,7 @@ export default function Logo({ size = "md" }: LogoProps) {
           />
         </svg>
       </div>
-      <span className={styles.text}>APV</span>
+      <span className={styles.text}>Plataforma</span>
     </div>
   );
 }

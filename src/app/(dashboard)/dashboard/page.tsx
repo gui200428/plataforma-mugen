@@ -5,7 +5,7 @@ import CourseCard from "@/components/CourseCard";
 import StatsCard from "@/components/StatsCard";
 import styles from "@/styles/dashboard.module.css";
 
-const TOKEN_COOKIE = "apv_token";
+const TOKEN_COOKIE = "token";
 
 // Mock data for courses (backend doesn't have Course model yet)
 const mockCourses = [
@@ -81,10 +81,11 @@ export default async function DashboardPage() {
 
   let userName = "Aluno";
   try {
-    const profile = await getProfile(token);
+    const profile = await getProfile(token!);
     userName = profile.name;
   } catch {
-    redirect("/login");
+    // Se falhar, usa o valor padrão — o middleware já cuida da autenticação
+    console.error("Falha ao buscar perfil do usuário");
   }
 
   // Calculate stats from mock data

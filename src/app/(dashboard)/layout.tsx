@@ -27,8 +27,8 @@ export default async function DashboardLayout({
     userEmail = profile.email;
     userName = profile.name;
   } catch {
-    // If token is invalid, redirect to login
-    redirect("/login");
+    // Se falhar, usa os valores padrão — o middleware já cuida da autenticação
+    console.error("Falha ao buscar perfil do usuário");
   }
 
   return (
