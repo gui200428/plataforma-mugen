@@ -55,11 +55,7 @@ export async function registerRequest(
 }
 
 export async function getProfile(token: string): Promise<UserProfile> {
-  const baseUrl = typeof window === "undefined"
-    ? (process.env.API_URL || API_URL)
-    : API_URL;
-
-  const response = await fetch(`${baseUrl}/auth/profile`, {
+  const response = await fetch(`${API_URL}/auth/profile`, {
     headers: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
