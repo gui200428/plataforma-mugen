@@ -202,3 +202,35 @@ export async function getUsers(token: string): Promise<StudentUser[]> {
   });
   return handleResponse<StudentUser[]>(response);
 }
+
+// ----------------------------------------------------
+// Admin — Sales Management
+// ----------------------------------------------------
+
+export interface Sale {
+  id: number;
+  transaction: string;
+  buyerEmail: string;
+  buyerName: string;
+  productId: string;
+  productName: string;
+  status: string;
+  hotmartPayload: any;
+  user?: {
+    id: number;
+    name: string;
+    email: string;
+  };
+  createdAt: string;
+  updatedAt: string;
+}
+
+export async function getSales(token: string): Promise<Sale[]> {
+  const response = await fetch(`${API_URL}/sales`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  });
+  return handleResponse<Sale[]>(response);
+}
