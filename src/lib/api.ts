@@ -17,6 +17,26 @@ export interface UserProfile {
   updatedAt: string;
 }
 
+export interface Lesson {
+  id: number;
+  title: string;
+  videoUrl: string;
+  position: number;
+  moduleId: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface Module {
+  id: number;
+  title: string;
+  description?: string;
+  position: number;
+  createdAt: string;
+  updatedAt: string;
+  lessons?: Lesson[];
+}
+
 async function handleResponse<T>(response: Response): Promise<T> {
   if (!response.ok) {
     const body = await response.json().catch(() => ({}));
@@ -62,4 +82,123 @@ export async function getProfile(token: string): Promise<UserProfile> {
     },
   });
   return handleResponse<UserProfile>(response);
+}
+
+// ----------------------------------------------------
+// Admin & Content Endpoints
+// ----------------------------------------------------
+
+export async function adminLoginRequest(
+  email: string,
+  password: string
+): Promise<AuthResponse> {
+  const response = await fetch(`${API_URL}/admin/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password }),
+  });
+  return handleResponse<AuthResponse>(response);
+}
+
+export async function getModules(token?: string): Promise<Module[]> {
+  const headers: Record<string, string> = { "Content-Type": "application/json" };
+  if (token) {
+    headers["Authorization"] = `Bearer ${token}`;
+  }
+  const response = await fetch(`${API_URL}/modules`, { headers });
+  return handleResponse<Module[]>(response);
+}
+
+export async function createModule(
+  token: string,
+  data: { title: string; description?: string; position?: number }
+): Promise<Module> {
+  const response = await fetch(`${API_URL}/modules`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  });
+  return handleResponse<Module>(response);
+}
+
+export async function updateModule(
+  token: string,
+  id: number,
+  data: { title?: string; description?: string; position?: number }
+): Promise<Module> {
+  const response = await fetch(`${API_URL}/modules/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  });
+  return handleResponse<Module>(response);
+}
+
+export async function createLesson(
+  token: string,
+  data: { title: string; videoUrl: string; moduleId: number; position?: number }
+): Promise<Lesson> {
+  const response = await fetch(`${API_URL}/lessons`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  });
+  return handleResponse<Lesson>(response);
+}
+
+export async function updateLesson(
+  token: string,
+  id: number,
+  data: { title?: string; videoUrl?: string; position?: number; moduleId?: number }
+): Promise<Lesson> {
+  const response = await fetch(`${API_URL}/lessons/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  });
+  return handleResponse<Lesson>(response);
+}
+
+export async function getLesson(token: string, id: number): Promise<Lesson> {
+  const response = await fetch(`${API_URL}/lessons/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  });
+  return handleResponse<Lesson>(response);
+}
+
+// ----------------------------------------------------
+// Admin — Users Management
+// ----------------------------------------------------
+
+export interface StudentUser {
+  id: number;
+  name: string;
+  email: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export async function getUsers(token: string): Promise<StudentUser[]> {
+  const response = await fetch(`${API_URL}/users`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  });
+  return handleResponse<StudentUser[]>(response);
 }

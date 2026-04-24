@@ -1,0 +1,190 @@
+/* ═══════════════════════════════════════════
+   Student Course Content Styles
+   Premium dark theme module/lesson cards
+   ═══════════════════════════════════════════ */
+
+/* ── Module Card ── */
+.moduleCard {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.moduleCard:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.moduleCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--accent-gradient);
+  opacity: 0.8;
+}
+
+.moduleHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-left: var(--space-sm);
+}
+
+.moduleInfo {
+  flex: 1;
+}
+
+.moduleBadge {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-muted);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.moduleTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.moduleDesc {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* ── Lessons List ── */
+.lessonsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-top: var(--space-lg);
+  border-top: 1px solid var(--border);
+  padding-top: var(--space-lg);
+  padding-left: var(--space-sm);
+}
+
+.lessonItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.lessonItem:hover {
+  background: var(--bg-elevated);
+  border-color: var(--border);
+}
+
+.lessonInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex: 1;
+  min-width: 0;
+}
+
+.lessonNum {
+  font-family: var(--font-mono);
+  color: var(--text-tertiary);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  background: var(--bg-tertiary);
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.lessonTitle {
+  font-weight: 500;
+  color: var(--text-primary);
+  font-size: 0.9375rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.watchBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--accent);
+  padding: 6px 14px;
+  background: var(--accent-muted);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.watchBtn:hover {
+  background: rgba(139, 92, 246, 0.25);
+  color: var(--accent-hover);
+}
+
+/* ── Empty State ── */
+.emptyState {
+  text-align: center;
+  padding: var(--space-3xl) var(--space-xl);
+  color: var(--text-tertiary);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-xl);
+}
+
+.emptyState p:first-child {
+  font-size: 1.125rem;
+  margin-bottom: var(--space-xs);
+}
+
+.emptyState p:last-child {
+  font-size: 0.875rem;
+}
+
+.emptyModule {
+  margin-top: var(--space-md);
+  padding-left: var(--space-lg);
+  color: var(--text-tertiary);
+  font-size: 0.875rem;
+  font-style: italic;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .moduleCard {
+    padding: var(--space-md);
+  }
+
+  .lessonItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
+  .watchBtn {
+    align-self: flex-end;
+  }
+}
